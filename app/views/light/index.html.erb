@@ -1,0 +1,6 @@
+<h1 class="slc_title">Smart Light Control</h1>
+<%= form_tag publish_broker_path, method: 'post' do %>
+    <%= label_tag('Light Num:') %>
+    <%= text_field_tag(:light_num) %>
+    <%= submit_tag('Publish') %>
+<% end %>
