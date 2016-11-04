@@ -10,7 +10,7 @@ class LightController < ApplicationController
     MQTT::Client.connect(conn_opts) do |c|
       c.publish('ruby', "Hello World #{params['light_num']}")
     end
-    redirect_to root_path
+    render :nothing=>true
   end
 
   private

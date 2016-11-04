@@ -1,6 +1,25 @@
-<h1 class="slc_title">Smart Light Control</h1>
-<%= form_tag publish_broker_path, method: 'post' do %>
-    <%= label_tag('Light Num:') %>
-    <%= text_field_tag(:light_num) %>
-    <%= submit_tag('Publish') %>
-<% end %>
+<div class="title">
+  Smart Light Control
+</div>
+<div class="logo"></div>
+<div class="control-panel">
+  <div>
+    <label>南区</label>
+    <input id='south-side-toggle' type="checkbox" checked data-toggle="toggle">
+  </div>
+  <div>
+    <label>中区</label>
+    <input id='middle-side-toggle' type="checkbox" checked data-toggle="toggle">
+  </div>
+  <div>
+    <label>北区</label>
+    <input id='north-side-toggle' type="checkbox" checked data-toggle="toggle">
+  </div>
+
+
+  <!--<%= form_tag publish_broker_path, method: 'post' do %>-->
+      <!--<%= label_tag('Light Num:') %>-->
+      <!--<%= text_field_tag(:light_num) %>-->
+      <!--<%= submit_tag('Publish') %>-->
+  <!--<% end %>-->
+</div>
