@@ -6,7 +6,7 @@ $(function () {
             data = {"light_num": "south", "status": "on"}
         }
 
-        $.post("http://localhost:3000/smart_light_control/publish", {"light_num": data}, function () {
+        $.post("http://localhost:3000/smart_light_control/publish", data, function () {
          console.log(data);
         });
     });
@@ -22,4 +22,4 @@ $(function () {
             alert("success")
         });
     });
-})
+});
