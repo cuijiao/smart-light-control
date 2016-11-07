@@ -38,11 +38,18 @@
     margin: 10px 5px;
   }
 
+  .disable{
+    filter: gray;
+    -webkit-filter: grayscale(100%);
+  }
+
   .img1 {
     //width: 229px;
     width: 60%;
     height: 155px;
     //display: inline-block;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
+    //background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), image-url("hero-image.jpg");
   }
 
   .img2 {
