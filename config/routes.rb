@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'light#index'
+  get 'partial_pannel' => 'partial_pannel#index'
 
   get 'smart_light_control' => 'light#index'
   post 'smart_light_control/publish' => 'light#publish_broker', as: :publish_broker
