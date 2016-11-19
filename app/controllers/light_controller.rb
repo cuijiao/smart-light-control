@@ -17,10 +17,12 @@ class LightController < ApplicationController
   end
 
   def publish_broker
+    message = {"control" => [{"id": params["light_num"], "status": params["status"]}]}
+    
     MQTT::Client.connect(conn_opts) do |c|
-      c.publish('ruby', "Hello World #{params['light_num']}")
+      c.publish('ruby', message)
     end
-    render :nothing=>true
+    render :nothing => true
   end
 
   private
