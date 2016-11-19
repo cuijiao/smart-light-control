@@ -5,6 +5,6 @@ class ApplicationController < ActionController::Base
 
   private
   def set_domain
-    @smart_light_control_domain = ENV['smart_light_control_domain'] || "testtest"
+    @smart_light_control_domain = ENV['SMART_LIGHT_CONTROL_DOMAIN']
   end
 end
