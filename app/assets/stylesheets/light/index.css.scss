@@ -24,6 +24,25 @@
       }
     }
 
+    .panel-lists{
+      padding-left: 40px;
+
+      .panel-item{
+        height: 7vh;
+        padding-top: 2%;
+        list-style-type: none;
+        border-top: 2px solid rgba(241, 146, 7, 0.62);
+
+        .panel-item-label{
+          margin-left: 3%;
+        }
+        .bootstrap-switch{
+          position: absolute;
+          right: 5%;
+        }
+      }
+    }
+
     ul {
       margin-bottom: 0;
 
@@ -36,12 +55,11 @@
         span {
           margin-left: 3%;
         }
-
-        div {
-          position: absolute;
-          right: 6%;
-        }
       }
     }
+  }
+
+  .bootstrap-switch{
+    width: 78px;
   }
 }

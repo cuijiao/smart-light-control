@@ -3,13 +3,13 @@
   .panel-header
     img src=asset_path("master-control.png")
     span 总控开关
-  ul
-    li
-      span 南区总控
-      input#south-switch type="checkbox" data-toggle="toggle" data-width="50" data-height="25"
-    li
-      span 中区总控
-      input#center-switch type="checkbox" data-toggle="toggle" data-width="50" data-height="25"
-    li
-      span 北区总控
-      input#north-switch type="checkbox" data-toggle="toggle" data-width="50" data-height="25"
+  .panel-lists
+    .panel-item
+      span.panel-item-label 南区总控
+      input#south type="checkbox" name="my-checkbox" data-size="mini" data-on-color="warning"
+    .panel-item
+      span.panel-item-label 中区总控
+      input#center type="checkbox" name="my-checkbox" data-size="mini" data-on-color="warning"
+    .panel-item
+      span.panel-item-label 北区总控
+      input#north type="checkbox" name="my-checkbox" data-size="mini" data-on-color="warning"

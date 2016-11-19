@@ -1,25 +1,10 @@
 $(function () {
-    $('#south-switch').change(function () {
-        var data = {"light_num": "south", "status": "off"};
-
-        if (!$(this).parent().hasClass("off")) {
-            data = {"light_num": "south", "status": "on"}
-        }
+    $('input[name="my-checkbox"]').on('switchChange.bootstrapSwitch', function (event, state) {
+        var status = state == true ? "on" : "off"
+        var data = {"light_num": this.id, "status": status};
 
         $.post(SMARTCONTROL.domain + "/smart_light_control/publish", data, function () {
             console.log(data);
-        });
-    });
-
-    $('#center-switch').change(function () {
-        $.post(SMARTCONTROL.domain + "/smart_light_control/publish", {"light_num": "middle"}, function () {
-            alert("success")
-        });
-    });
-
-    $('#north-switch').change(function () {
-        $.post(SMARTCONTROL.domain + "/smart_light_control/publish", {"light_num": "north"}, function () {
-            alert("success")
         });
     });
 });
