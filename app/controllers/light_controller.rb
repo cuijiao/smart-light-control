@@ -7,6 +7,15 @@ class LightController < ApplicationController
   def index
   end
 
+  def south_index
+  end
+
+  def center_index
+  end
+
+  def north_index
+  end
+
   def publish_broker
     MQTT::Client.connect(conn_opts) do |c|
       c.publish('ruby', "Hello World #{params['light_num']}")

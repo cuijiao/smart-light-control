@@ -1,7 +1,6 @@
-div.title Smart Switch
-div.logo
-div.control-panel
-  div.panel-header
+.logo
+.control-panel
+  .panel-header
     img src=asset_path("master-control.png")
     span 总控开关
   ul
@@ -14,8 +13,3 @@ div.control-panel
     li
       span 北区总控
       input#north-switch type="checkbox" data-toggle="toggle" data-width="50" data-height="25"
-
-
-javascript:
-  var SMARTCONTROL = SMARTCONTROL || {};
-  SMARTCONTROL.domain = "#{@smart_light_control_domain}";

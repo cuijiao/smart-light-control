@@ -1,44 +1,46 @@
-.nav-panel {
-  position: fixed;
-  left: 0px;
-  bottom: 0px;
-  height: 9vh;
-  width: 100%;
-  border-top: 2px solid rgba(241, 146, 7, 0.62);
+@media screen and (max-width: 1024px) {
+  .nav-panel {
+    position: fixed;
+    left: 0px;
+    bottom: 0px;
+    height: 9vh;
+    width: 100%;
+    border-top: 2px solid rgba(241, 146, 7, 0.62);
 
-  .nav {
-    display: inline-block;
-    margin-top: 1vh;
-    width: 24%;
-    font-size: 12px;
-    text-align: center;
-    text-decoration: none;
+    .nav {
+      display: inline-block;
+      margin-top: 1vh;
+      width: 24%;
+      font-size: 12px;
+      text-align: center;
+      text-decoration: none;
 
-    .icon {
-      display: block;
-      height: 4.5vh;
-      margin: 0 10%;
-      background-repeat: no-repeat;
-      background-size: 43% 100%;
-      background-position: center;
+      .icon {
+        display: block;
+        height: 4.5vh;
+        margin: 0 10%;
+        background-repeat: no-repeat;
+        background-size: 43% 100%;
+        background-position: center;
+      }
     }
-  }
 
-  .home .icon {
-    background-image: asset-url("home.png");
-  }
+    .home .icon {
+      background-image: asset-url("home.png");
+    }
 
-  .south .icon {
-    background-image: asset-url("south.png");
-  }
+    .south .icon {
+      background-image: asset-url("south.png");
+    }
 
-  .center .icon {
-    height: 4vh;
-    width: 75%;
-    background-image: asset-url("center.png");
-  }
+    .center .icon {
+      height: 4vh;
+      width: 75%;
+      background-image: asset-url("center.png");
+    }
 
-  .north .icon {
-    background-image: asset-url("north.png");
+    .north .icon {
+      background-image: asset-url("north.png");
+    }
   }
 }

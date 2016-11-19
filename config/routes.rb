@@ -4,9 +4,11 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'light#index'
-  get 'partial_pannel' => 'partial_pannel#index'
 
-  get 'smart_light_control' => 'light#index'
+  get 'smart_light_control' => 'light#index', as: :home
+  get 'smart_light_control/south' => 'light#south_index', as: :south_control
+  get 'smart_light_control/center' => 'light#center_index',as: :center_control
+  get 'smart_light_control/north' => 'light#north_index',as: :north_control
   post 'smart_light_control/publish' => 'light#publish_broker', as: :publish_broker
 
   # Example of regular route:
