@@ -11,3 +11,8 @@ div.control-panel
   div
     label 北区
     input#north-side-toggle type="checkbox" data-toggle="toggle" data-width="50" data-height="25"
+
+content_for :scripts
+  javascript:
+    var SMARTCONTROL = SMARTCONTROL || {} ;
+    SMARTCONTROL.domain = "#{@smart_light_control_domain}" ;

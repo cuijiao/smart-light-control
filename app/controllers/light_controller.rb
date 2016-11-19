@@ -2,6 +2,7 @@ require 'mqtt'
 require 'uri'
 
 class LightController < ApplicationController
+  before_action :set_domain
 
   def index
   end
