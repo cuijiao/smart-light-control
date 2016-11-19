@@ -2,17 +2,31 @@ div.title
   span Smart Switch
 div.logo
 div.control-panel
-  div
-    label 南区
-    input#south-side-toggle type="checkbox" data-toggle="toggle" data-width="50" data-height="25"
-  div
-    label 中区
-    input#middle-side-toggle type="checkbox" data-toggle="toggle" data-width="50" data-height="25"
-  div
-    label 北区
-    input#north-side-toggle type="checkbox" data-toggle="toggle" data-width="50" data-height="25"
+  div 一键控制
+  ul
+    li
+      label 南区
+      input#south-switch type="checkbox" data-toggle="toggle" data-width="50" data-height="25"
+    li
+      label 中区
+      input#center-switch type="checkbox" data-toggle="toggle" data-width="50" data-height="25"
+    li
+      label 北区
+      input#north-switch type="checkbox" data-toggle="toggle" data-width="50" data-height="25"
+div.nav-panel
+  a.nav.home
+    span.icon
+    span home
+  a.nav.south
+    span.icon
+    span south
+  a.nav.center
+    span.icon
+    span center
+  a.nav.north
+    span.icon
+    span north
 
-content_for :scripts
-  javascript:
-    var SMARTCONTROL = SMARTCONTROL || {} ;
-    SMARTCONTROL.domain = "#{@smart_light_control_domain}" ;
+javascript:
+  var SMARTCONTROL = SMARTCONTROL || {} ;
+  SMARTCONTROL.domain = "#{@smart_light_control_domain}" ;

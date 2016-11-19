@@ -1,5 +1,5 @@
 $(function () {
-    $('#south-side-toggle').change(function () {
+    $('#south-switch').change(function () {
         var data = {"light_num": "south", "status": "off"};
 
         if (!$(this).parent().hasClass("off")) {
@@ -11,13 +11,13 @@ $(function () {
         });
     });
 
-    $('#middle-side-toggle').change(function () {
+    $('#center-switch').change(function () {
         $.post(SMARTCONTROL.domain + "/smart_light_control/publish", {"light_num": "middle"}, function () {
             alert("success")
         });
     });
 
-    $('#north-side-toggle').change(function () {
+    $('#north-switch').change(function () {
         $.post(SMARTCONTROL.domain + "/smart_light_control/publish", {"light_num": "north"}, function () {
             alert("success")
         });
