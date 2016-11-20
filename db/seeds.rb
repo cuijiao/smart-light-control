@@ -5,3 +5,18 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+Light.create({section: 'south', light_id: 1})
+Light.create({section: 'south', light_id: 2})
+Light.create({section: 'south', light_id: 3})
+Light.create({section: 'south', light_id: 4})
+
+Light.create({section: 'center', light_id: 1})
+Light.create({section: 'center', light_id: 2})
+Light.create({section: 'center', light_id: 3})
+Light.create({section: 'center', light_id: 4})
+
+Light.create({section: 'north', light_id: 1})
+Light.create({section: 'north', light_id: 2})
+Light.create({section: 'north', light_id: 3})
+Light.create({section: 'north', light_id: 4})

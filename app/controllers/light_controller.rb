@@ -17,11 +17,8 @@ class LightController < ApplicationController
   end
 
   def publish_broker
-    message = {"control" => [{"id": params["light_num"], "status": params["status"]}]}
-    
-    MQTT::Client.connect(conn_opts) do |c|
-      c.publish('ruby', message)
-    end
+    section, light_id, status = params['section'], params['light_id'], params['status']
+    light_id.nil? ? switch_section(section, status) : switch_light(section, light_id, status)
     render :nothing => true
   end
 
@@ -35,5 +32,30 @@ class LightController < ApplicationController
         username: uri.user,
         password: uri.password,
     }
+  end
+
+  def switch_section section, status
+    section_light_ids = Light.where('section = ?', section).map(&:light_id)
+    switch_message = section_light_ids.map do |light_id|
+      {'section': section, 'id': light_id, 'status': status}
+    end
+
+    publish_message switch_message
+
+    Light.where('section = ?', section).update_all("status = '#{status}'")
+  end
+
+  def switch_light section, light_id, status
+    switch_message = {'section': section, 'id': light_id, 'status': status}
+
+    publish_message switch_message
+
+    Light.where('section = ? and light_id = ?', section, light_id).update("status = '#{status}'")
+  end
+
+  def publish_message message
+    MQTT::Client.connect(conn_opts) do |c|
+      c.publish('ruby', {'control' => message})
+    end
   end
 end
