@@ -1,8 +1,14 @@
-.image-panel
-  .box
-    img.img1.disable src=asset_path('sitting-room.png')
-    img.img2.disable src=asset_path('bed-room.png')
-  .box
-    img.img3.disable src=asset_path('living-room.png')
-  .box
-    img.img4.disable src=asset_path('dinning-room.png')
+.center
+  .image-panel
+    .box
+      img.img1.disable src=asset_path('sitting-room.png')
+      img.img2.disable src=asset_path('bed-room.png')
+    .box
+      img.img3.disable src=asset_path('living-room.png')
+    .box
+      img.img4.disable src=asset_path('dinning-room.png')
+javascript:
+  $('.center .image-panel .box img').click(event, function () {
+    $(this).toggleClass('disable');
+    event.preventDefault();
+  });
