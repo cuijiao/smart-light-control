@@ -50,7 +50,7 @@ class LightController < ApplicationController
 
     publish_message switch_message
 
-    Light.where('section = ? and light_id = ?', section, light_id).update("status = '#{status}'")
+    Light.where('section = ? and light_id = ?', section, light_id).update_all("status = '#{status}'")
   end
 
   def publish_message message

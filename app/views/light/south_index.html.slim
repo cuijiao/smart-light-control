@@ -1,14 +1,20 @@
 .south
   .image-panel
     .box
-      img.img1.disable src=asset_path('sitting-room.png')
-      img.img2.disable src=asset_path('bed-room.png')
+      img.img1.disable alt=1 src=asset_path('sitting-room.png')
+      img.img2.disable alt=2 src=asset_path('bed-room.png')
     .box
-      img.img3.disable src=asset_path('living-room.png')
+      img.img3.disable alt=3 src=asset_path('living-room.png')
     .box
-      img.img4.disable src=asset_path('dinning-room.png')
+      img.img4.disable alt=4 src=asset_path('dinning-room.png')
 javascript:
   $('.south .image-panel .box img').click(event, function () {
     $(this).toggleClass('disable');
-    event.preventDefault();
+
+    var status = $(this).hasClass('disable') == false ? 'on' : 'off';
+    var data = {"section": 'south', "light_id": $(this).attr('alt'), "status": status};
+
+    $.post(SMARTCONTROL.domain + "/smart_light_control/publish", data, function () {
+      console.log(data);
+    });
   });
