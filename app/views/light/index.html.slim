@@ -1,15 +1,19 @@
 .logo
+  img src=asset_path("index-img.png")
 .control-panel
   .panel-header
-    img src=asset_path("master-control.png")
+    span.glyphicon.glyphicon-cog.config-icon
     span 总控开关
   .panel-lists
     .panel-item
+      span.glyphicon.glyphicon-object-align-left
       span.panel-item-label 南区总控
-      input#south type="checkbox" name="my-checkbox" data-size="mini" data-on-color="warning"
+      input#south type="checkbox" name="my-checkbox" data-size="mini" data-on-color="success"
     .panel-item
+      span.glyphicon.glyphicon-object-align-vertical
       span.panel-item-label 中区总控
-      input#center type="checkbox" name="my-checkbox" data-size="mini" data-on-color="warning"
+      input#center type="checkbox" name="my-checkbox" data-size="mini" data-on-color="success"
     .panel-item
+      span.glyphicon.glyphicon-object-align-right
       span.panel-item-label 北区总控
-      input#north type="checkbox" name="my-checkbox" data-size="mini" data-on-color="warning"
+      input#north type="checkbox" name="my-checkbox" data-size="mini" data-on-color="success"

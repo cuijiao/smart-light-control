@@ -5,7 +5,7 @@
     bottom: 0px;
     height: 9vh;
     width: 100%;
-    border-top: 2px solid rgba(241, 146, 7, 0.62);
+    border-top: 2px solid #eee;
 
     .nav {
       display: inline-block;
@@ -24,23 +24,15 @@
         background-position: center;
       }
     }
-
-    .home .icon {
-      background-image: asset-url("home.png");
-    }
-
-    .south .icon {
-      background-image: asset-url("south.png");
-    }
-
     .center .icon {
       height: 4vh;
       width: 75%;
-      background-image: asset-url("center.png");
     }
-
-    .north .icon {
-      background-image: asset-url("north.png");
+  }
+  .nav{
+    span{
+      font-size: 30px;
+      color: rgb(33, 148, 140);
     }
   }
 }
