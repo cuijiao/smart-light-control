@@ -8,12 +8,24 @@ class LightController < ApplicationController
   end
 
   def south_index
+    @light1 = Light.where("section = 'south' and light_id = 1").first
+    @light2 = Light.where("section = 'south' and light_id = 2").first
+    @light3 = Light.where("section = 'south' and light_id = 3").first
+    @light4 = Light.where("section = 'south' and light_id = 4").first
   end
 
   def center_index
+    @light1 = Light.where("section = 'center' and light_id = 1").first
+    @light2 = Light.where("section = 'center' and light_id = 2").first
+    @light3 = Light.where("section = 'center' and light_id = 3").first
+    @light4 = Light.where("section = 'center' and light_id = 4").first
   end
 
   def north_index
+    @light1 = Light.where("section = 'north' and light_id = 1").first
+    @light2 = Light.where("section = 'north' and light_id = 2").first
+    @light3 = Light.where("section = 'north' and light_id = 3").first
+    @light4 = Light.where("section = 'north' and light_id = 4").first
   end
 
   def publish_broker
@@ -50,7 +62,7 @@ class LightController < ApplicationController
 
     publish_message switch_message
 
-    Light.where('section = ? and light_id = ?', section, light_id).update_all("status = '#{status}'")
+    Light.where("section = '#{section}' and light_id = #{light_id}").update_all("status = '#{status}'")
   end
 
   def publish_message message

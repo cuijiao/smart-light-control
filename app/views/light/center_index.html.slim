@@ -1,12 +1,12 @@
 .center
   .image-panel
     .box
-      img.img1.disable alt=1 src=asset_path('sitting-room.png')
-      img.img2.disable alt=2 src=asset_path('bed-room.png')
+      img.img1 alt=1 src=asset_path('sitting-room.png') class="#{on?(@light1)? '': 'disable'}"
+      img.img2 alt=2 src=asset_path('bed-room.png') class="#{on?(@light2)? '': 'disable'}"
     .box
-      img.img3.disable alt=3 src=asset_path('living-room.png')
+      img.img3 alt=3 src=asset_path('living-room.png') class="#{on?(@light3)? '': 'disable'}"
     .box
-      img.img4.disable alt=4 src=asset_path('dinning-room.png')
+      img.img4 alt=4 src=asset_path('dinning-room.png') class="#{on?(@light4)? '': 'disable'}"
 javascript:
   $('.center .image-panel .box img').click(event, function () {
     $(this).toggleClass('disable');
