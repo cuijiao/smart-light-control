@@ -47,27 +47,28 @@ class LightController < ApplicationController
   end
 
   def switch_section section, status
-    section_light_ids = Light.where('section = ?', section).map(&:light_id)
-    switch_message = section_light_ids.map do |light_id|
-      {'section': section, 'id': light_id, 'status': status}
-    end
+    chip_details = Light.where('section = ?', section).select('chip_id, chip_port')
 
-    publish_message switch_message
+    chip_details.each do |chip_detail|
+      publish_message_to_broker chip_detail.chip_id, chip_detail.chip_port, status
+    end
 
     Light.where('section = ?', section).update_all("status = '#{status}'")
   end
 
   def switch_light section, light_id, status
-    switch_message = {'section': section, 'id': light_id, 'status': status}
+    chip_details = Light.where('section = ? and light_id = ?', section, light_id).select('chip_id, chip_port')
 
-    publish_message switch_message
+    chip_details.each do |chip_detail|
+      publish_message_to_broker chip_detail.chip_id, chip_detail.chip_port, status
+    end
 
     Light.where("section = '#{section}' and light_id = #{light_id}").update_all("status = '#{status}'")
   end
 
-  def publish_message message
+  def publish_message_to_broker chip_id, chip_port, status
     MQTT::Client.connect(conn_opts) do |c|
-      c.publish('ruby', {'control' => message})
+      c.publish("/smart_switch/#{chip_id}", {'id' => chip_port, 'status' => status}.to_json)
     end
   end
 end
