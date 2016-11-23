@@ -1,5 +1,5 @@
 module ApplicationHelper
   def on? light
-    light.status == 'on'
+    light.status == 1
   end
 end
