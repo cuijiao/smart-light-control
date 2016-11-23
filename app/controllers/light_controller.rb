@@ -29,7 +29,7 @@ class LightController < ApplicationController
   end
 
   def publish_broker
-    section, light_id, status = params['section'], params['light_id'], params['status']
+    section, light_id, status = params['section'], params['light_id'], params['status'].to_i
     light_id.nil? ? switch_section(section, status) : switch_light(section, light_id, status)
     render :nothing => true
   end
