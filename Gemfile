@@ -9,7 +9,8 @@ gem 'slim-rails'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'sass-rails', '~> 5.0'
-gem 'bootstrap-sass', '~> 3.2.0'
+gem 'bootstrap-sass', '~> 3.3.6'
+gem 'bootstrap-switch-rails'
 # Deploy Heroku need this gem
 gem 'rails_12factor', group: :production
 
