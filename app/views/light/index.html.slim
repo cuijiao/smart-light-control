@@ -8,21 +8,24 @@
     .panel-item
       span.glyphicon.glyphicon-object-align-left
       span.panel-item-label 南区总控
-      input#south type="checkbox" name="my-checkbox" data-size="mini" data-on-color="success"
+      input#south type="checkbox" name="my-checkbox" data-size="mini" data-on-color="success" checked=on?@south_master_control_toggle_on
     .panel-item
       span.glyphicon.glyphicon-object-align-vertical
       span.panel-item-label 中区总控
-      input#center type="checkbox" name="my-checkbox" data-size="mini" data-on-color="success"
+      input#center type="checkbox" name="my-checkbox" data-size="mini" data-on-color="success" checked=on?@center_master_control_toggle_on
     .panel-item
       span.glyphicon.glyphicon-object-align-right
       span.panel-item-label 北区总控
-      input#north type="checkbox" name="my-checkbox" data-size="mini" data-on-color="success"
-javascript:
-  $('input[name="my-checkbox"]').on('switchChange.bootstrapSwitch', function (event, state) {
-    var status = state == true ? 1 : 0;
-    var data = {"section": this.id, "status": status};
+      input#north type="checkbox" name="my-checkbox" data-size="mini" data-on-color="success" checked=on?@north_master_control_toggle_on
 
-    $.post(SMARTCONTROL.domain + "/smart_light_control/publish", data, function () {
-      console.log(data);
+javascript:
+  $(function () {
+    $('input[name="my-checkbox"]').on('switchChange.bootstrapSwitch', function (event, state) {
+      var status = state == true ? 1 : 0;
+      var data = {"section": this.id, "status": status};
+
+      $.post(SMARTCONTROL.domain + "/smart_light_control/publish", data, function () {
+        console.log(data);
+      });
     });
   });

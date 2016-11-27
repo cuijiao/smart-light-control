@@ -1,20 +1,22 @@
 .south
   .image-panel
     .box
-      img.img1 alt=1 src=asset_path('sitting-room.png') class="#{on?(@light1)? '': 'disable'}"
-      img.img2 alt=2 src=asset_path('bed-room.png') class="#{on?(@light2)? '': 'disable'}"
+      img.img1 alt=1 src=asset_path('sitting-room.png') class="#{on?(@light1.status)? '': 'disable'}"
+      img.img2 alt=2 src=asset_path('bed-room.png') class="#{on?(@light2.status)? '': 'disable'}"
     .box
-      img.img3 alt=3 src=asset_path('living-room.png') class="#{on?(@light3)? '': 'disable'}"
+      img.img3 alt=3 src=asset_path('living-room.png') class="#{on?(@light3.status)? '': 'disable'}"
     .box
-      img.img4 alt=4 src=asset_path('dinning-room.png') class="#{on?(@light4)? '': 'disable'}"
+      img.img4 alt=4 src=asset_path('dinning-room.png') class="#{on?(@light4.status)? '': 'disable'}"
 javascript:
-  $('.south .image-panel .box img').click(event, function () {
-    $(this).toggleClass('disable');
+  $(function () {
+    $('.south .image-panel .box img').click(event, function () {
+      $(this).toggleClass('disable');
 
-    var status = $(this).hasClass('disable') == false ? 1 : 0;
-    var data = {"section": 'south', "light_id": $(this).attr('alt'), "status": status};
+      var status = $(this).hasClass('disable') == false ? 1 : 0;
+      var data = {"section": 'south', "light_id": $(this).attr('alt'), "status": status};
 
-    $.post(SMARTCONTROL.domain + "/smart_light_control/publish", data, function () {
-      console.log(data);
+      $.post(SMARTCONTROL.domain + "/smart_light_control/publish", data, function () {
+        console.log(data);
+      });
     });
   });
