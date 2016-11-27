@@ -1,41 +1,28 @@
 @media screen and (max-width: 1024px) {
   .logo {
     img {
-      height: 200px;
+      height: 31vh;
       width: 100%;
     }
   }
 
   .control-panel {
-    margin: 0 0;
 
     .panel-header {
-      height: 8vh;
       line-height: 53px;
 
       span{
         margin-left: 2%;
         vertical-align: middle;
-        color: #333f48;
-      }
-      .config-icon {
-        font-size: 24px;
-        color: rgb(33, 148, 140);
       }
 
-      img {
-        width: 15%;
-        height: 100%;
+      .config-icon {
+        font-size: 25px;
+        color: rgb(33, 148, 140);
       }
     }
 
     .panel-lists {
-
-      .panel-item {
-        padding-left: 20px;
-        padding-top: 0px;
-        background-color: #fff;
-      }
 
       .panel-item:nth-child(odd) {
         background-color: #f5f5f6;
@@ -43,43 +30,28 @@
 
       .panel-item {
         position: relative;
-        height: 12vh;
+        padding-left: 23px;
         line-height: 12vh;
-        list-style-type: none;
-        span.glyphicon {
+
+        .glyphicon {
           font-size: 20px;
         }
 
         .panel-item-label{
           margin-left: 3%;
         }
+
         .bootstrap-switch{
           position: absolute;
-          right:0;
           top:50%;
-          transform: translate(-50%, -50%);
           right: 2%;
+          transform: translate(-50%, -50%);
         }
       }
-    }
 
-    ul {
-      margin-bottom: 0;
-
-      li {
-        height: 7vh;
-        padding-top: 2%;
-        list-style-type: none;
-        border-top: 2px solid rgba(241, 146, 7, 0.62);
-
-        span {
-          margin-left: 3%;
-        }
+      .bootstrap-switch{
+        width: 78px;
       }
     }
-  }
-
-  .bootstrap-switch{
-    width: 78px;
   }
 }

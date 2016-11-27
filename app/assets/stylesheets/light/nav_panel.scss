@@ -1,5 +1,5 @@
 @media screen and (max-width: 1024px) {
-  .nav-panel {
+  .ss-nav-panel {
     position: fixed;
     left: 0px;
     bottom: 0px;
@@ -7,32 +7,23 @@
     width: 100%;
     border-top: 2px solid #eee;
 
-    .nav {
+    .ss-nav {
       display: inline-block;
-      margin-top: 1vh;
+      margin-top: 1.5vh;
       width: 24%;
       font-size: 12px;
       text-align: center;
       text-decoration: none;
 
-      .icon {
-        display: block;
-        height: 4.5vh;
-        margin: 0 10%;
-        background-repeat: no-repeat;
-        background-size: 43% 100%;
-        background-position: center;
+      span {
+        font-size: 21px;
+        color: rgb(33, 148, 140);
       }
-    }
-    .center .icon {
-      height: 4vh;
-      width: 75%;
-    }
-  }
-  .nav{
-    span{
-      font-size: 30px;
-      color: rgb(33, 148, 140);
+
+      .ss-icon-tag {
+        font-size: 13px;
+        display: block;
+      }
     }
   }
 }

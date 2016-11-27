@@ -1,12 +1,16 @@
-.nav-panel
-  a.nav href=home_path
+.ss-nav-panel
+  a.ss-nav href=home_path
     span.glyphicon.glyphicon-home.home-icon
-  a.nav href=south_control_path
+    span.ss-icon-tag home
+  a.ss-nav href=south_control_path
     span.glyphicon.glyphicon-object-align-left
-  a.nav href=center_control_path
+    span.ss-icon-tag south
+  a.ss-nav href=center_control_path
     span.glyphicon.glyphicon-object-align-vertical
-  a.nav href=north_control_path
+    span.ss-icon-tag south
+  a.ss-nav href=north_control_path
     span.glyphicon.glyphicon-object-align-right
+    span.ss-icon-tag north
 
 javascript:
   $("[name='my-checkbox']").bootstrapSwitch();
