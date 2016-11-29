@@ -7,6 +7,7 @@
       img.img3 alt=3 src=asset_path('living-room.png') class="#{on?(@light3.status)? '': 'disable'}"
     .box
       img.img4 alt=4 src=asset_path('dinning-room.png') class="#{on?(@light4.status)? '': 'disable'}"
+
 javascript:
   $(function () {
     $('.south .image-panel .box img').click(event, function () {
