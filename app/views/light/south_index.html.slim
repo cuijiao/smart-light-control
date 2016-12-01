@@ -13,7 +13,7 @@ javascript:
     $('.south .image-panel .box img').click(event, function () {
       $(this).toggleClass('disable');
 
-      var status = $(this).hasClass('disable') == false ? 1 : 0;
+      var status = $(this).hasClass('disable') == true ? 0 : 1;
       var data = {"section": 'south', "light_id": $(this).attr('alt'), "status": status};
 
       $.post(SMARTCONTROL.domain + "/smart_light_control/publish", data, function () {
