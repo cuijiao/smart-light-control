@@ -13,10 +13,6 @@ class MQTTPublisher
         password: uri.password,
     }
 
-    p "++++++++++++++++++"
-    p conn_opts
-    p "/smart_switch/#{chip_id}"
-    p message.to_json
     MQTT::Client.connect(conn_opts) do |c|
       c.publish("/smart_switch/#{chip_id}", message.to_json)
     end

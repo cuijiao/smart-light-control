@@ -41,15 +41,29 @@ class LightController < ApplicationController
 
   def switch_section section, status
     lights = Light.where('section = ?', section)
+
     lights.each do |light|
-      status == 1 ? light.switch_on : light.switch_off
+      if need_delay? && status == 0
+        light.delay_switch_off
+      else
+        status == 1 ? light.switch_on : light.switch_off
+      end
     end
   end
 
   def switch_light section, light_id, status
     lights = Light.where('section = ? and light_id = ?', section, light_id)
+
     lights.each do |light|
-      status == 1 ? light.switch_on : light.switch_off
+      if need_delay? && status == 0
+        light.delay_switch_off
+      else
+        status == 1 ? light.switch_on : light.switch_off
+      end
     end
+  end
+
+  def need_delay?
+    Time.now.utc.hour+8 > ENV['DELAY_THRESHOLD'].to_i
   end
 end

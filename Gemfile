@@ -5,6 +5,7 @@ ruby "2.3.0"
 gem 'pg'
 gem 'mqtt'
 gem 'slim-rails'
+gem 'daemons'
 gem 'delayed_job_active_record'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
