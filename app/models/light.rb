@@ -18,6 +18,6 @@ class Light < ActiveRecord::Base
   def delay_switch_off
     switch_off
     self.delay(run_at: 5.seconds.from_now).switch_on
-    self.delay(run_at: 15.seconds.from_now).switch_off
+    self.delay(run_at: 60.seconds.from_now).switch_off
   end
 end
