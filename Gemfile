@@ -6,6 +6,7 @@ gem 'pg'
 gem 'mqtt'
 gem 'slim-rails'
 gem 'daemons'
+gem 'coffee-rails'
 gem 'delayed_job_active_record'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -13,6 +14,8 @@ gem 'jquery-ui-rails'
 gem 'sass-rails', '~> 5.0'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'bootstrap-switch-rails'
+gem 'websocket-rails'
+gem 'faye-websocket', '0.10.0'
 # Deploy Heroku need this gem
 gem 'rails_12factor', group: :production
 

@@ -11,24 +11,24 @@ class LightController < ApplicationController
   end
 
   def south_index
-    @light1 = Light.where("section = 'south' and light_id = 1").first
-    @light2 = Light.where("section = 'south' and light_id = 2").first
-    @light3 = Light.where("section = 'south' and light_id = 3").first
-    @light4 = Light.where("section = 'south' and light_id = 4").first
+    @light1 = Light.where('light_id = 1').first
+    @light2 = Light.where('light_id = 2').first
+    @light3 = Light.where('light_id = 3').first
+    @light4 = Light.where('light_id = 4').first
   end
 
   def center_index
-    @light1 = Light.where("section = 'center' and light_id = 1").first
-    @light2 = Light.where("section = 'center' and light_id = 2").first
-    @light3 = Light.where("section = 'center' and light_id = 3").first
-    @light4 = Light.where("section = 'center' and light_id = 4").first
+    @light1 = Light.where('light_id = 5').first
+    @light2 = Light.where('light_id = 6').first
+    @light3 = Light.where('light_id = 7').first
+    @light4 = Light.where('light_id = 8').first
   end
 
   def north_index
-    @light1 = Light.where("section = 'north' and light_id = 1").first
-    @light2 = Light.where("section = 'north' and light_id = 2").first
-    @light3 = Light.where("section = 'north' and light_id = 3").first
-    @light4 = Light.where("section = 'north' and light_id = 4").first
+    @light1 = Light.where('light_id = 9').first
+    @light2 = Light.where('light_id = 10').first
+    @light3 = Light.where('light_id = 11').first
+    @light4 = Light.where('light_id = 12').first
   end
 
   def publish_broker

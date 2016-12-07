@@ -20,12 +20,10 @@
 
 javascript:
   $(function () {
-    $('input[name="my-checkbox"]').on('switchChange.bootstrapSwitch', function (event, state) {
-      var status = state == true ? 1 : 0;
-      var data = {"section": this.id, "status": status};
+    $("[name='my-checkbox']").bootstrapSwitch();
 
-      $.post(SMARTCONTROL.domain + "/smart_light_control/publish", data, function () {
-        console.log(data);
-      });
+    $('input[name="my-checkbox"]').on('switchChange.bootstrapSwitch', function (event, state) {
+      var data = {"section": this.id};
+      state == true ? SMARTCONTROL.dispatcher.trigger('light.section_switch_on', data) : SMARTCONTROL.dispatcher.trigger('light.section_switch_off', data);
     });
   });

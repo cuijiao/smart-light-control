@@ -3,7 +3,6 @@ html
   head
     title SmartSwitch
     meta name="viewport" content="width=device-width, initial-scale=1"
-    meta http-equiv="refresh" content="6"
     = stylesheet_link_tag "application", :media => "all"
     = javascript_include_tag "application"
     = csrf_meta_tags
@@ -11,3 +10,22 @@ html
     = render 'layouts/header'
     == yield
     = render 'layouts/nav_panel'
+
+javascript:
+  var dispatcher = function () {
+    var dispatcher = new WebSocketRails(window.location.host + "/websocket");
+
+    dispatcher.bind('light.switch_on_success', function (args) {
+      console.log('turn on success');
+      $('#light' + args['light_id']).removeClass('disable');
+    });
+
+    dispatcher.bind('light.switch_off_success', function (args) {
+      console.log('turn off success');
+      $('#light' + args['light_id']).addClass('disable');
+    });
+
+    return dispatcher;
+  };
+
+  var SMARTCONTROL = SMARTCONTROL || {'dispatcher': dispatcher()} ;
