@@ -1,0 +1,75 @@
+.image-panel {
+  .box {
+    margin: 5px 5px;
+
+    div[class^="partial"] {
+      display: inline-block;
+      position: relative;
+    }
+
+
+    .partial1 {
+      width: 60%;
+      height: 24vh;
+    }
+
+    .partial2 {
+      width: 39%;
+      height: 24vh;
+
+    }
+
+    .partial3 {
+      width: 73%;
+      height: 25vh;
+      margin-left: 27%;
+
+    }
+
+    .partial4 {
+      width: 73%;
+      display: inline-block;
+      height: 28vh;
+
+    }
+
+    .disable {
+      filter: gray;
+      -webkit-filter: grayscale(100%);
+    }
+    img {
+      width: 100%;
+      height: 100%;
+    }
+
+    .waiting {
+      opacity: 0.5;
+    }
+
+    .overlay {
+      display:none;
+      position: absolute;
+      z-index: 1;
+      left:50%;
+      top:50%;
+      transform: translate(-50%, -50%);
+      padding: 4px 12px;
+
+
+      .glyphicon-refresh-animate {
+        -animation: spin 2s infinite linear;
+        -webkit-animation: spin2 2s infinite linear;
+      }
+
+      @-webkit-keyframes spin2 {
+        from { -webkit-transform: rotate(0deg);}
+        to { -webkit-transform: rotate(360deg);}
+      }
+
+      @keyframes spin {
+        from { transform: scale(1) rotate(0deg);}
+        to { transform: scale(1) rotate(360deg);}
+      }
+    }
+  }
+}
