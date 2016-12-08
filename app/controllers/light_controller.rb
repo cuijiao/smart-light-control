@@ -5,12 +5,14 @@ class LightController < ApplicationController
   before_action :set_domain
 
   def index
+    @location = 'home'
     @south_master_control_toggle_on = Light.exists?(:status => 1, :section => 'south')
     @center_master_control_toggle_on = Light.exists?(:status => 1, :section => 'center')
     @north_master_control_toggle_on = Light.exists?(:status => 1, :section => 'north')
   end
 
   def south_index
+    @location = 'south'
     @light1 = Light.where('light_id = 1').first
     @light2 = Light.where('light_id = 2').first
     @light3 = Light.where('light_id = 3').first
@@ -18,6 +20,7 @@ class LightController < ApplicationController
   end
 
   def center_index
+    @location = 'center'
     @light1 = Light.where('light_id = 5').first
     @light2 = Light.where('light_id = 6').first
     @light3 = Light.where('light_id = 7').first
@@ -25,6 +28,7 @@ class LightController < ApplicationController
   end
 
   def north_index
+    @location = 'north'
     @light1 = Light.where('light_id = 9').first
     @light2 = Light.where('light_id = 10').first
     @light3 = Light.where('light_id = 11').first

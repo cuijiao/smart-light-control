@@ -1,13 +1,13 @@
 .ss-nav-panel
-  a.ss-nav href=home_path
+  a.ss-nav class="#{@location == 'home'? 'active' : ''}" href=home_path
     span.glyphicon.glyphicon-home.home-icon
     span.ss-icon-tag home
-  a.ss-nav href=south_control_path
+  a.ss-nav class="#{@location == 'south'? 'active' : ''}" href=south_control_path
     span.glyphicon.glyphicon-object-align-left
     span.ss-icon-tag south
-  a.ss-nav href=center_control_path
+  a.ss-nav class="#{@location == 'center'? 'active' : ''}" href=center_control_path
     span.glyphicon.glyphicon-object-align-vertical
     span.ss-icon-tag center
-  a.ss-nav href=north_control_path
+  a.ss-nav class="#{@location == 'north'? 'active' : ''}" href=north_control_path
     span.glyphicon.glyphicon-object-align-right
     span.ss-icon-tag north
