@@ -13,11 +13,19 @@ class DelayedJobManager
     instance.insert_delayed_jobs_for light_id, delayed_job_id
   end
 
+  def self.reset_delayed_jobs_for light_id
+    instance.reset_delayed_jobs_for light_id
+  end
+
   def get_delayed_jobs_by light_id
     @delayed_jobs["#{light_id}"]
   end
 
   def insert_delayed_jobs_for light_id, delayed_job_id
     @delayed_jobs["#{light_id}"] << delayed_job_id
+  end
+
+  def reset_delayed_jobs_for light_id
+    @delayed_jobs["#{light_id}"] = []
   end
 end

@@ -13,16 +13,6 @@ class WebsocketEventController < WebsocketRails::BaseController
     switch_light data[:light_id], 'off', :switch_off_success
   end
 
-  def check_delay
-    p 'check_delay'
-    light = Light.where('light_id = ?', data[:light_id])[0]
-    if light.status == 1
-      broadcast_message :switch_on_success, data, :namespace => :light
-    else
-      broadcast_message :switch_off_success, data, :namespace => :light
-    end
-  end
-
   def section_switch_on
     lights = Light.where('section = ?', data[:section])
     lights.each do |light|
@@ -35,6 +25,19 @@ class WebsocketEventController < WebsocketRails::BaseController
     lights.each do |light|
       switch_light light.light_id, 'off', :switch_off_success
     end
+  end
+
+  def check_delay
+    light = Light.where('light_id = ?', data[:light_id])[0]
+    light.status == 1 ? broadcast_message(:switch_on_success, data, :namespace => :light) : broadcast_message(:switch_off_success, data, :namespace => :light)
+  end
+
+  def cancle_delay
+    light_id = data[:light_id]
+    ids = DelayedJobManager.get_delayed_jobs_by light_id
+    
+    Delayed::Job.where('id in (?)', ids).delete_all
+    DelayedJobManager.reset_delayed_jobs_for light_id
   end
 
   private
