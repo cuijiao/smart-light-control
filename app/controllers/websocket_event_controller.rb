@@ -34,7 +34,7 @@ class WebsocketEventController < WebsocketRails::BaseController
       light.switch_off
       light.delay(run_at: 3.seconds.from_now).switch_on
       broadcast_message :delay_switch_off, {'light_id' => light_id}, :namespace => :light
-      light.delay(run_at: 60.seconds.from_now).switch_off
+      light.delay(run_at: 10.seconds.from_now).switch_off
     else
       status == 'on' ? light.switch_on : light.switch_off
       broadcast_message callback, {'light_id' => light_id}, :namespace => :light
@@ -42,7 +42,8 @@ class WebsocketEventController < WebsocketRails::BaseController
   end
 
   def need_delay?
-    (Time.now.utc.hour+8) % 24 > delay_threshold
+    Time.now.utc.hour+8 > delay_threshold
+    true
   end
 
   def delay_threshold
