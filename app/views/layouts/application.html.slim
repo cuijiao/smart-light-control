@@ -22,9 +22,13 @@ javascript:
 
     dispatcher.bind('light.switch_off_success', function (args) {
       console.log('turn off success');
+      $('#light' + args['light_id']).addClass('disable');
+    });
+
+    dispatcher.bind('light.delay_switch_off', function (args) {
+      console.log('delay turn off');
       var selector = $('#light' + args['light_id']);
-      selector.closest('[class ^= partial]').find('.overlay').hide();
-      selector.addClass('disable');
+      selector.closest('[class ^= partial]').find('.overlay').show();
     });
 
     return dispatcher;
