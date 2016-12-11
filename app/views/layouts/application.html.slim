@@ -28,7 +28,7 @@ javascript:
     dispatcher.bind('light.delay_switch_off', function (args) {
       console.log('delay turn off');
       var selector = $('#light' + args['light_id']);
-      selector.closest('[class ^= partial]').find('.overlay').show();
+      selector.parent().find('.overlay').show();
     });
 
     return dispatcher;

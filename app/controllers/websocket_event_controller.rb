@@ -11,6 +11,16 @@ class WebsocketEventController < WebsocketRails::BaseController
     switch_light data[:light_id], 'off', :switch_off_success
   end
 
+  def check_delay
+    p 'check_delay'
+    light = Light.where('light_id = ?', data[:light_id])[0]
+    if light.status == 1
+      broadcast_message :switch_on_success, data, :namespace => :light
+    else
+      broadcast_message :switch_off_success, data, :namespace => :light
+    end
+  end
+
   def section_switch_on
     lights = Light.where('section = ?', data[:section])
     lights.each do |light|
