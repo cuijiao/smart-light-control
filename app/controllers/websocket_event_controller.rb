@@ -35,7 +35,7 @@ class WebsocketEventController < WebsocketRails::BaseController
   def cancle_delay
     light_id = data[:light_id]
     ids = DelayedJobManager.get_delayed_jobs_by light_id
-    
+
     Delayed::Job.where('id in (?)', ids).delete_all
     DelayedJobManager.reset_delayed_jobs_for light_id
   end

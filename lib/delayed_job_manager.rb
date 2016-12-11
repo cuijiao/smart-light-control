@@ -1,8 +1,13 @@
+require 'singleton'
+
 class DelayedJobManager
   include Singleton
 
   def initialize
-    @delayed_jobs = Hash.new([])
+    @delayed_jobs = {}
+    Light.all.select(:light_id).each do |light|
+      @delayed_jobs["#{light.light_id}"] = []
+    end
   end
 
   def self.get_delayed_jobs_by light_id
