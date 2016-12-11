@@ -1,3 +1,5 @@
+require 'delayed_job_manager'
+
 class WebsocketEventController < WebsocketRails::BaseController
   def client_connected
     p 'client connected'
@@ -44,7 +46,8 @@ class WebsocketEventController < WebsocketRails::BaseController
       light.switch_off
       light.delay(run_at: 3.seconds.from_now).switch_on
       broadcast_message :delay_switch_off, {'light_id' => light_id}, :namespace => :light
-      light.delay(run_at: 10.seconds.from_now).switch_off
+      job = light.delay(run_at: 20.seconds.from_now).switch_off
+      DelayedJobManager.insert_delayed_jobs_for light_id, job.id
     else
       status == 'on' ? light.switch_on : light.switch_off
       broadcast_message callback, {'light_id' => light_id}, :namespace => :light
