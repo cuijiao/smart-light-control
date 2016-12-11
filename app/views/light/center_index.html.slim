@@ -21,11 +21,6 @@ javascript:
     $('.center .image-panel .box img').click(event, function () {
       var id = $(this)[0].id;
       var data = {light_id: id.replace('light', '')};
-
-      if ($(this).hasClass('disable') == true) {
-        SMARTCONTROL.dispatcher.trigger('light.switch_on', data)
-      } else {
-        SMARTCONTROL.dispatcher.trigger('light.switch_off', data);
-      }
+      $(this).hasClass('disable') == true ? SMARTCONTROL.dispatcher.trigger('light.switch_on', data) : SMARTCONTROL.dispatcher.trigger('light.switch_off', data);
     });
   });
