@@ -19,8 +19,23 @@
 javascript:
   $(function () {
     $('.center .image-panel .box img').click(event, function () {
-      var id = $(this)[0].id;
-      var data = {light_id: id.replace('light', '')};
-      $(this).hasClass('disable') == true ? SMARTCONTROL.dispatcher.trigger('light.switch_on', data) : SMARTCONTROL.dispatcher.trigger('light.switch_off', data);
+      var id = $(this)[0].id.replace('light', '');
+      var data = {light_id: id};
+      if ($(this).hasClass('disable') == true) {
+        SMARTCONTROL.dispatcher.trigger('light.switch_on', data)
+      } else {
+        SMARTCONTROL.dispatcher.trigger('light.switch_off', data);
+      }
+    });
+
+    $(".center .overlay").click(event, function () {
+      alert("Will stop turnning off the light");
+      var id = $(this).parent().find("img")[0].id.replace('light', '');
+      console.log("Will cancle the light: " + id);
+      SMARTCONTROL.dispatcher.trigger('light.cancle_delay', {light_id: id});
+      $(this).hide();
+      if(TIMER_JOBS[id]){
+        clearTimeout(TIMER_JOBS[id]);
+      }
     });
   });

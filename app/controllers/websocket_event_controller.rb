@@ -58,7 +58,7 @@ class WebsocketEventController < WebsocketRails::BaseController
   end
 
   def need_delay?
-    Time.now.utc.hour+8 > delay_threshold
+    (Time.now.utc.hour+8)%24 > delay_threshold
   end
 
   def delay_threshold

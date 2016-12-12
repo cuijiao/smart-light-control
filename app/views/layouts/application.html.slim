@@ -12,6 +12,8 @@ html
     = render 'layouts/nav_panel'
 
 javascript:
+
+  var TIMER_JOBS = TIMER_JOBS || [];
   var dispatcher = function () {
     var dispatcher = new WebSocketRails(window.location.host + "/websocket");
 
@@ -22,13 +24,24 @@ javascript:
 
     dispatcher.bind('light.switch_off_success', function (args) {
       console.log('turn off success');
-      $('#light' + args['light_id']).addClass('disable');
+      var selector = $('#light' + args['light_id']);
+      selector.addClass('disable');
+      selector.parent().find('.overlay').hide();
+      if (TIMER_JOBS[args['light_id']]) {
+        clearTimeout(TIMER_JOBS[args['light_id']]);
+      }
     });
 
     dispatcher.bind('light.delay_switch_off', function (args) {
       console.log('delay turn off');
       var selector = $('#light' + args['light_id']);
       selector.parent().find('.overlay').show();
+
+      var timerId = setInterval(function () {
+        SMARTCONTROL.dispatcher.trigger('light.check_delay', {light_id: args['light_id']});
+      }, 3000);
+      TIMER_JOBS[args['light_id']] = timerId;
+      console.log(TIMER_JOBS)
     });
 
     return dispatcher;

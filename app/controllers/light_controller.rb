@@ -68,6 +68,6 @@ class LightController < ApplicationController
   end
 
   def need_delay?
-    Time.now.utc.hour+8 > ENV['DELAY_THRESHOLD'].to_i
+    (Time.now.utc.hour+8) % 24 > ENV['DELAY_THRESHOLD'].to_i
   end
 end
