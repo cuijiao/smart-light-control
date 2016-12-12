@@ -2,18 +2,18 @@
   .image-panel
     .box
       .partial1
-        img.img1 id='light9' src=asset_path("sitting-room.png") class="#{on?(@light1.status) ? '' : 'disable'}"
+        img.img1 id='light9' src=asset_path('2.png') class="#{on?(@light1.status) ? '' : 'disable'}"
         = render 'light/pending_partial'
       .partial2
-        img.img2 id='light10' src=asset_path('bed-room.png') class="#{on?(@light2.status) ? '' : 'disable'}"
+        img.img2 id='light10' src=asset_path('5.png') class="#{on?(@light2.status) ? '' : 'disable'}"
         = render 'light/pending_partial'
     .box
       .partial3
-        img.img3 id='light11' src=asset_path('living-room.png') class="#{on?(@light3.status) ? '' : 'disable'}"
+        img.img3 id='light11' src=asset_path('11.png') class="#{on?(@light3.status) ? '' : 'disable'}"
         = render 'light/pending_partial'
     .box
       .partial4
-        img.img4 id='light12' src=asset_path('dinning-room.png') class="#{on?(@light4.status) ? '' : 'disable'}"
+        img.img4 id='light12' src=asset_path('4.png') class="#{on?(@light4.status) ? '' : 'disable'}"
         = render 'light/pending_partial'
 
 javascript:
@@ -22,16 +22,5 @@ javascript:
       var id = $(this)[0].id;
       var data = {light_id: id.replace('light', '')};
       $(this).hasClass('disable') == true ? SMARTCONTROL.dispatcher.trigger('light.switch_on', data) : SMARTCONTROL.dispatcher.trigger('light.switch_off', data);
-    });
-
-    $(".north .overlay").click(event, function () {
-      alert("Will stop turnning off the light");
-      var id = $(this).parent().find("img")[0].id.replace('light', '');
-      console.log("Will cancle the light: " + id);
-      SMARTCONTROL.dispatcher.trigger('light.cancle_delay', {light_id: id});
-      $(this).hide();
-      if (TIMER_JOBS[id]) {
-        clearTimeout(TIMER_JOBS[id]);
-      }
     });
   });
