@@ -16,14 +16,16 @@ class WebsocketEventController < WebsocketRails::BaseController
   def section_switch_on
     lights = Light.where('section = ?', data[:section])
     lights.each do |light|
-      switch_light light.light_id, 'on', :switch_on_success
+      light.switch_on
+      broadcast_message :switch_on_success, {'light_id' => light_id}, :namespace => :light
     end
   end
 
   def section_switch_off
     lights = Light.where('section = ?', data[:section])
     lights.each do |light|
-      switch_light light.light_id, 'off', :switch_off_success
+      light.switch_off
+      broadcast_message :switch_off_success, {'light_id' => light_id}, :namespace => :light
     end
   end
 
