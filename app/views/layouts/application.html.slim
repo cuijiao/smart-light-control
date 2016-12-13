@@ -28,6 +28,7 @@ javascript:
       selector.addClass('disable');
       selector.parent().find('.overlay').hide();
       if (TIMER_JOBS[args['light_id']]) {
+        console.log("Delete the timer for light: "+ args['light_id']);
         clearTimeout(TIMER_JOBS[args['light_id']]);
       }
     });
