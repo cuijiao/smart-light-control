@@ -17,7 +17,7 @@ class WebsocketEventController < WebsocketRails::BaseController
     lights = Light.where('section = ?', data[:section])
     lights.each do |light|
       light.switch_on
-      broadcast_message :switch_on_success, {'light_id' => light_id}, :namespace => :light
+      broadcast_message :switch_on_success, {'light_id' => light.light_id}, :namespace => :light
     end
   end
 
@@ -25,7 +25,7 @@ class WebsocketEventController < WebsocketRails::BaseController
     lights = Light.where('section = ?', data[:section])
     lights.each do |light|
       light.switch_off
-      broadcast_message :switch_off_success, {'light_id' => light_id}, :namespace => :light
+      broadcast_message :switch_off_success, {'light_id' => light.light_id}, :namespace => :light
     end
   end
 
