@@ -17,18 +17,6 @@ javascript:
   var dispatcher = function () {
     var dispatcher = new WebSocketRails(window.location.host + "/websocket");
 
-    dispatcher.bind('light.section_switch_on_success', function (args) {
-      console.log('section turn on success');
-      var section = args['section'];
-      $('#'+section).prop("checked", true)
-    });
-
-    dispatcher.bind('light.section_switch_off_success', function (args) {
-      console.log('section turn off success');
-      var section = args['section'];
-      $('#'+section).prop("checked", false)
-    });
-
     dispatcher.bind('light.switch_on_success', function (args) {
       console.log('turn on success');
       $('#light' + args['light_id']).removeClass('disable');

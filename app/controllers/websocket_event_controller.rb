@@ -19,7 +19,6 @@ class WebsocketEventController < WebsocketRails::BaseController
       light.switch_on
       broadcast_message :switch_on_success, {'light_id' => light.light_id}, :namespace => :light
     end
-    broadcast_message :section_switch_on_success, data, :namespace => :light
   end
 
   def section_switch_off
@@ -28,7 +27,6 @@ class WebsocketEventController < WebsocketRails::BaseController
       light.switch_off
       broadcast_message :switch_off_success, {'light_id' => light.light_id}, :namespace => :light
     end
-    broadcast_message :section_switch_off_success, data, :namespace => :light
   end
 
   def check_delay
