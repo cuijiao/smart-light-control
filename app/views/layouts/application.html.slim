@@ -38,6 +38,7 @@ javascript:
       selector.parent().find('.overlay').show();
 
       var timerId = setInterval(function () {
+        console.log("Interval loop light status for light_id: " + args['light_id']);
         SMARTCONTROL.dispatcher.trigger('light.check_delay', {light_id: args['light_id']});
       }, 5000);
       TIMER_JOBS[args['light_id']] = timerId;
