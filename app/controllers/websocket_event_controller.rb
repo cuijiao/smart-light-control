@@ -35,7 +35,6 @@ class WebsocketEventController < WebsocketRails::BaseController
   def cancle_delay
     light_id = data[:light_id]
     ids = DelayedJobManager.get_delayed_jobs_by light_id
-
     Delayed::Job.where('id in (?)', ids).delete_all
     DelayedJobManager.reset_delayed_jobs_for light_id
   end
@@ -49,7 +48,7 @@ class WebsocketEventController < WebsocketRails::BaseController
       light.switch_off
       light.delay(run_at: 3.seconds.from_now).switch_on
       broadcast_message :delay_switch_off, {'light_id' => light_id}, :namespace => :light
-      job = light.delay(run_at: 20.seconds.from_now).switch_off
+      job = light.delay(run_at: 63.seconds.from_now).switch_off
       DelayedJobManager.insert_delayed_jobs_for light_id, job.id
     else
       status == 'on' ? light.switch_on : light.switch_off
