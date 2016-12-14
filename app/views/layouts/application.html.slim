@@ -19,9 +19,11 @@ javascript:
 
     dispatcher.bind('light.switch_on_success', function (args) {
       console.log('turn on success');
-      var selector = $('#light' + args['light_id']);
-      selector.removeClass('disable');
-      selector.parent().find('.overlay').hide();
+      $('#light' + args['light_id']).removeClass('disable');
+    });
+
+    dispatcher.bind('light.cancel_delay_success', function(args){
+      $('#light' + args['light_id']).parent().find('.overlay').hide();
     });
 
     dispatcher.bind('light.switch_off_success', function (args) {
