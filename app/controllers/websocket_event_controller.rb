@@ -25,6 +25,7 @@ class WebsocketEventController < WebsocketRails::BaseController
     lights = Light.where('section = ?', data[:section])
     lights.each do |light|
       light.switch_off
+      DelayedJobManager.reset_delayed_jobs_for light.light_id
       broadcast_message :switch_off_success, {'light_id' => light.light_id}, :namespace => :light
     end
   end
