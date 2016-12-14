@@ -45,6 +45,7 @@ class WebsocketEventController < WebsocketRails::BaseController
     ids = DelayedJobManager.get_delayed_jobs_by light_id
     Delayed::Job.where('id in (?)', ids).delete_all
     DelayedJobManager.reset_delayed_jobs_for light_id
+    broadcast_message(:switch_on_success, data, :namespace => :light)
   end
 
   private
