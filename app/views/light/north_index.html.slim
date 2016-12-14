@@ -3,18 +3,18 @@
     .box
       .partial1
         img.img1 id='light9' src=asset_path('2.png') class="#{on?(@light1.status) ? '' : 'disable'}"
-        = render 'light/pending_partial'
+        = render :partial => 'light/pending_partial', locals: {display: "#{delay?(9) ? 'block' : 'none'}"}
       .partial2
         img.img2 id='light10' src=asset_path('5.png') class="#{on?(@light2.status) ? '' : 'disable'}"
-        = render 'light/pending_partial'
+        = render :partial => 'light/pending_partial', locals: {display: "#{delay?(10) ? 'block' : 'none'}"}
     .box
       .partial3
         img.img3 id='light11' src=asset_path('11.png') class="#{on?(@light3.status) ? '' : 'disable'}"
-        = render 'light/pending_partial'
+        = render :partial => 'light/pending_partial', locals: {display: "#{delay?(11) ? 'block' : 'none'}"}
     .box
       .partial4
         img.img4 id='light12' src=asset_path('4.png') class="#{on?(@light4.status) ? '' : 'disable'}"
-        = render 'light/pending_partial'
+        = render :partial => 'light/pending_partial', locals: {display: "#{delay?(12) ? 'block' : 'none'}"}
 
 javascript:
   $(function () {

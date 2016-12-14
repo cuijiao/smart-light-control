@@ -1,4 +1,5 @@
 require_relative '../services/mqtt_publisher'
+require 'delayed_job_manager'
 
 class Light < ActiveRecord::Base
 
@@ -12,6 +13,7 @@ class Light < ActiveRecord::Base
 
   def switch_off
     MQTTPublisher.publish chip_id, {'id' => self.chip_port, 'status' => 0}
+    DelayedJobManager.reset_delayed_jobs_for self.light_id
     self.update!({:status => '0'})
   end
 
