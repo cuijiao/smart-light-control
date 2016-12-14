@@ -31,7 +31,13 @@ class WebsocketEventController < WebsocketRails::BaseController
 
   def check_delay
     light = Light.where('light_id = ?', data[:light_id])[0]
-    light.status == 1 ? broadcast_message(:switch_on_success, data, :namespace => :light) : broadcast_message(:switch_off_success, data, :namespace => :light)
+
+    if light.status == 1
+      broadcast_message(:switch_on_success, data, :namespace => :light)
+    else
+      DelayedJobManager.reset_delayed_jobs_for data[:light_id]
+      broadcast_message(:switch_off_success, data, :namespace => :light)
+    end
   end
 
   def cancle_delay
